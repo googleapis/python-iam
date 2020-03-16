@@ -1,15 +1,17 @@
-Python Client for IAM API (`Alpha`_)
+Python Client for IAM API
 ================================================================
 
-
+|ga| |pypi| |versions|
 
 `IAM API`_: IAM API
 
-- `Client Library Documentation`_
-- `Product Documentation`_
-
-.. _Alpha: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
-.. _IAM API: https://cloud.google.com/iam
+.. |ga| image:: https://img.shields.io/badge/support-GA-gold.svg
+   :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#general-availability
+.. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-iam.svg
+   :target: https://pypi.org/project/google-cloud-iam/
+.. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-iam.svg
+   :target: https://pypi.org/project/google-cloud-iam/
+.. _IAM API:  https://cloud.google.com/iam
 .. _Client Library Documentation: https://googleapis.dev/python/iamcredentials/latest
 .. _Product Documentation:  https://cloud.google.com/iam
 
@@ -78,8 +80,8 @@ Next Steps
    API to see other available methods on the client.
 -  Read the `IAM API Product documentation`_ to learn
    more about the product and see How-to Guides.
--  View this `repository’s main README`_ to see the full list of Cloud
+-  View this `README`_ to see the full list of Cloud
    APIs that we cover.
 
 .. _IAM API Product documentation:  https://cloud.google.com/iam
-.. _repository’s main README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
+.. _README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
