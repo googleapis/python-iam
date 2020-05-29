@@ -72,7 +72,7 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
-        "--cov=google.cloud.iamcredentials",
+        "--cov=google.cloud.iam",
         "--cov=google.cloud",
         "--cov=tests.unit",
         "--cov-append",
