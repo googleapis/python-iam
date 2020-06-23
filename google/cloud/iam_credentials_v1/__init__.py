@@ -36,4 +36,7 @@ class IAMCredentialsClient(iam_credentials_client.IAMCredentialsClient):
     __doc__ = iam_credentials_client.IAMCredentialsClient.__doc__
 
 
-__all__ = ("types", "IAMCredentialsClient")
+__all__ = (
+    "types",
+    "IAMCredentialsClient",
+)
