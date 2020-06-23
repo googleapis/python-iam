@@ -350,8 +350,8 @@ class IAMCredentialsClient(object):
                 ``projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}``. The ``-``
                 wildcard character is required; replacing it with a project ID is
                 invalid.
-            include_email (bool): Include the service account email in the token. If set to ``true``, the
-                token will contain ``email`` and ``email_verified`` claims.
+            include_email (bool): Include the service account email in the token. If set to ``true``,
+                the token will contain ``email`` and ``email_verified`` claims.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
