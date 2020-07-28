@@ -4,7 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-iam.git",
-        "sha": "fb57fe375bf121ffd2e16e4cd6c8cc432624e271"
+        "sha": "f895427f7e59820931de194af42a10f44c5e9ae6"
+      }
+    },
+    {
+      "git": {
+        "name": "googleapis",
+        "remote": "https://github.com/googleapis/googleapis.git",
+        "sha": "6a813acf535e4746fa4a135ce23547bb6425c26d",
+        "internalRef": "323472217"
       }
     },
     {
