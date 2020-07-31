@@ -48,6 +48,17 @@ def client_cert_source_callback():
     return b"cert bytes", b"key bytes"
 
 
+# If default endpoint is localhost, then default mtls endpoint will be the same.
+# This method modifies the default endpoint so the client can produce a different
+# mtls endpoint for endpoint testing purposes.
+def modify_default_endpoint(client):
+    return (
+        "foo.googleapis.com"
+        if ("localhost" in client.DEFAULT_ENDPOINT)
+        else client.DEFAULT_ENDPOINT
+    )
+
+
 def test__get_default_mtls_endpoint():
     api_endpoint = "example.googleapis.com"
     api_mtls_endpoint = "example.mtls.googleapis.com"
@@ -113,6 +124,16 @@ def test_iam_credentials_client_get_transport_class():
             "grpc_asyncio",
         ),
     ],
+)
+@mock.patch.object(
+    IAMCredentialsClient,
+    "DEFAULT_ENDPOINT",
+    modify_default_endpoint(IAMCredentialsClient),
+)
+@mock.patch.object(
+    IAMCredentialsAsyncClient,
+    "DEFAULT_ENDPOINT",
+    modify_default_endpoint(IAMCredentialsAsyncClient),
 )
 def test_iam_credentials_client_client_options(
     client_class, transport_class, transport_name
@@ -335,14 +356,16 @@ def test_iam_credentials_client_client_options_from_dict():
         )
 
 
-def test_generate_access_token(transport: str = "grpc"):
+def test_generate_access_token(
+    transport: str = "grpc", request_type=common.GenerateAccessTokenRequest
+):
     client = IAMCredentialsClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = common.GenerateAccessTokenRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -359,12 +382,16 @@ def test_generate_access_token(transport: str = "grpc"):
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == common.GenerateAccessTokenRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, common.GenerateAccessTokenResponse)
 
     assert response.access_token == "access_token_value"
+
+
+def test_generate_access_token_from_dict():
+    test_generate_access_token(request_type=dict)
 
 
 @pytest.mark.asyncio
@@ -560,14 +587,16 @@ async def test_generate_access_token_flattened_error_async():
         )
 
 
-def test_generate_id_token(transport: str = "grpc"):
+def test_generate_id_token(
+    transport: str = "grpc", request_type=common.GenerateIdTokenRequest
+):
     client = IAMCredentialsClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = common.GenerateIdTokenRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -582,12 +611,16 @@ def test_generate_id_token(transport: str = "grpc"):
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == common.GenerateIdTokenRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, common.GenerateIdTokenResponse)
 
     assert response.token == "token_value"
+
+
+def test_generate_id_token_from_dict():
+    test_generate_id_token(request_type=dict)
 
 
 @pytest.mark.asyncio
@@ -779,14 +812,14 @@ async def test_generate_id_token_flattened_error_async():
         )
 
 
-def test_sign_blob(transport: str = "grpc"):
+def test_sign_blob(transport: str = "grpc", request_type=common.SignBlobRequest):
     client = IAMCredentialsClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = common.SignBlobRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client._transport.sign_blob), "__call__") as call:
@@ -801,7 +834,7 @@ def test_sign_blob(transport: str = "grpc"):
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == common.SignBlobRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, common.SignBlobResponse)
@@ -809,6 +842,10 @@ def test_sign_blob(transport: str = "grpc"):
     assert response.key_id == "key_id_value"
 
     assert response.signed_blob == b"signed_blob_blob"
+
+
+def test_sign_blob_from_dict():
+    test_sign_blob(request_type=dict)
 
 
 @pytest.mark.asyncio
@@ -988,14 +1025,14 @@ async def test_sign_blob_flattened_error_async():
         )
 
 
-def test_sign_jwt(transport: str = "grpc"):
+def test_sign_jwt(transport: str = "grpc", request_type=common.SignJwtRequest):
     client = IAMCredentialsClient(
         credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
-    request = common.SignJwtRequest()
+    request = request_type()
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client._transport.sign_jwt), "__call__") as call:
@@ -1010,7 +1047,7 @@ def test_sign_jwt(transport: str = "grpc"):
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
 
-        assert args[0] == request
+        assert args[0] == common.SignJwtRequest()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, common.SignJwtResponse)
@@ -1018,6 +1055,10 @@ def test_sign_jwt(transport: str = "grpc"):
     assert response.key_id == "key_id_value"
 
     assert response.signed_jwt == "signed_jwt_value"
+
+
+def test_sign_jwt_from_dict():
+    test_sign_jwt(request_type=dict)
 
 
 @pytest.mark.asyncio
@@ -1268,9 +1309,13 @@ def test_iam_credentials_base_transport_error():
 
 def test_iam_credentials_base_transport():
     # Instantiate the base transport.
-    transport = transports.IAMCredentialsTransport(
-        credentials=credentials.AnonymousCredentials(),
-    )
+    with mock.patch(
+        "google.cloud.iam_credentials_v1.services.iam_credentials.transports.IAMCredentialsTransport.__init__"
+    ) as Transport:
+        Transport.return_value = None
+        transport = transports.IAMCredentialsTransport(
+            credentials=credentials.AnonymousCredentials(),
+        )
 
     # Every method on the transport should just blindly
     # raise NotImplementedError.
@@ -1287,7 +1332,12 @@ def test_iam_credentials_base_transport():
 
 def test_iam_credentials_base_transport_with_credentials_file():
     # Instantiate the base transport with a credentials file
-    with mock.patch.object(auth, "load_credentials_from_file") as load_creds:
+    with mock.patch.object(
+        auth, "load_credentials_from_file"
+    ) as load_creds, mock.patch(
+        "google.cloud.iam_credentials_v1.services.iam_credentials.transports.IAMCredentialsTransport._prep_wrapped_messages"
+    ) as Transport:
+        Transport.return_value = None
         load_creds.return_value = (credentials.AnonymousCredentials(), None)
         transport = transports.IAMCredentialsTransport(
             credentials_file="credentials.json", quota_project_id="octopus",

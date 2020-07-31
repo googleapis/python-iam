@@ -308,41 +308,35 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, delegates, scope, lifetime]):
+        has_flattened_params = any([name, delegates, scope, lifetime])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = common.GenerateAccessTokenRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a common.GenerateAccessTokenRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, common.GenerateAccessTokenRequest):
+            request = common.GenerateAccessTokenRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
-        if delegates is not None:
-            request.delegates = delegates
-        if scope is not None:
-            request.scope = scope
-        if lifetime is not None:
-            request.lifetime = lifetime
+            if name is not None:
+                request.name = name
+            if delegates is not None:
+                request.delegates = delegates
+            if scope is not None:
+                request.scope = scope
+            if lifetime is not None:
+                request.lifetime = lifetime
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.generate_access_token,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.generate_access_token]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -429,41 +423,35 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, delegates, audience, include_email]):
+        has_flattened_params = any([name, delegates, audience, include_email])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = common.GenerateIdTokenRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a common.GenerateIdTokenRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, common.GenerateIdTokenRequest):
+            request = common.GenerateIdTokenRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
-        if delegates is not None:
-            request.delegates = delegates
-        if audience is not None:
-            request.audience = audience
-        if include_email is not None:
-            request.include_email = include_email
+            if name is not None:
+                request.name = name
+            if delegates is not None:
+                request.delegates = delegates
+            if audience is not None:
+                request.audience = audience
+            if include_email is not None:
+                request.include_email = include_email
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.generate_id_token,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.generate_id_token]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -540,39 +528,33 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, delegates, payload]):
+        has_flattened_params = any([name, delegates, payload])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = common.SignBlobRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a common.SignBlobRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, common.SignBlobRequest):
+            request = common.SignBlobRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
-        if delegates is not None:
-            request.delegates = delegates
-        if payload is not None:
-            request.payload = payload
+            if name is not None:
+                request.name = name
+            if delegates is not None:
+                request.delegates = delegates
+            if payload is not None:
+                request.payload = payload
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.sign_blob,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.sign_blob]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -651,39 +633,33 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, delegates, payload]):
+        has_flattened_params = any([name, delegates, payload])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = common.SignJwtRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a common.SignJwtRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, common.SignJwtRequest):
+            request = common.SignJwtRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
-        if delegates is not None:
-            request.delegates = delegates
-        if payload is not None:
-            request.payload = payload
+            if name is not None:
+                request.name = name
+            if delegates is not None:
+                request.delegates = delegates
+            if payload is not None:
+                request.payload = payload
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.sign_jwt,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.sign_jwt]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
