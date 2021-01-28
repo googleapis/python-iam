@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-iam.git",
-        "sha": "197a016688157a2b5350c612694a87b682009c8a"
+        "sha": "fbe776fe54514510a26a06b4cdac5903032fefdf"
       }
     },
     {
