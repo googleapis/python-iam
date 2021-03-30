@@ -4,22 +4,22 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-iam.git",
-        "sha": "6e527955a3432ddafa20e303551f4a60b3e44baf"
+        "sha": "29746e1984fc3942d830f54a9e921151d4d720c1"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "bdab50fe10ce3190812697e06f2e860780e9095e",
-        "internalRef": "347327128"
+        "sha": "520682435235d9c503983a360a2090025aa47cd1",
+        "internalRef": "350246057"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "373861061648b5fe5e0ac4f8a38b32d639ee93e4"
+        "sha": "41a4e56982620d3edcf110d76f4fcdfdec471ac8"
       }
     }
   ],
@@ -87,6 +87,7 @@
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/conf.py",
+    "docs/credentials_v1/iam_credentials.rst",
     "docs/credentials_v1/services.rst",
     "docs/credentials_v1/types.rst",
     "docs/multiprocessing.rst",
