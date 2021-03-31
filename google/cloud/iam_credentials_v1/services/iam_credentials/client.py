@@ -456,13 +456,12 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
 
             if name is not None:
                 request.name = name
+            if delegates is not None:
+                request.delegates = delegates
+            if scope is not None:
+                request.scope = scope
             if lifetime is not None:
                 request.lifetime = lifetime
-
-            if delegates:
-                request.delegates.extend(delegates)
-            if scope:
-                request.scope.extend(scope)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -576,13 +575,12 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
 
             if name is not None:
                 request.name = name
+            if delegates is not None:
+                request.delegates = delegates
             if audience is not None:
                 request.audience = audience
             if include_email is not None:
                 request.include_email = include_email
-
-            if delegates:
-                request.delegates.extend(delegates)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -684,11 +682,10 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
 
             if name is not None:
                 request.name = name
+            if delegates is not None:
+                request.delegates = delegates
             if payload is not None:
                 request.payload = payload
-
-            if delegates:
-                request.delegates.extend(delegates)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -793,11 +790,10 @@ class IAMCredentialsClient(metaclass=IAMCredentialsClientMeta):
 
             if name is not None:
                 request.name = name
+            if delegates is not None:
+                request.delegates = delegates
             if payload is not None:
                 request.payload = payload
-
-            if delegates:
-                request.delegates.extend(delegates)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
