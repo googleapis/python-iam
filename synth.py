@@ -67,7 +67,7 @@ s.replace(
 templated_files = common.py_library(
     samples=False,  # set to True only if there are samples
     microgenerator=True,
-    cov_level=99,
+    cov_level=97,
 )
 s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .coveragerc file
 
@@ -77,7 +77,5 @@ s.replace(
     "google.cloud.iam_credentials_v1",
 )
 
-# TODO(busunkim): Use latest sphinx after microgenerator transition
-s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
