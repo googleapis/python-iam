@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-iam.git",
-        "sha": "dfc7338406fc6d68e3980b240e028e0cc8097b8c"
+        "sha": "959b03d7c557881e586b29960d3aaaba75b3adbc"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "520682435235d9c503983a360a2090025aa47cd1",
-        "internalRef": "350246057"
+        "sha": "20712b8fe95001b312f62c6c5f33e3e3ec92cfaf",
+        "internalRef": "354996675"
       }
     },
     {
