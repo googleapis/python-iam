@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-iam.git",
-        "sha": "1fbdeceee5eba78233b913885be2cbffc3ca7904"
+        "sha": "34bd26ea26039000ca2d8128c6ef47110ee7e715"
       }
     },
     {
@@ -19,7 +19,7 @@
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "0a071b3460344886297a304253bf924aa68ddb7e"
+        "sha": "721339ab60a6eb63b889978b3d9b295dcb3be370"
       }
     }
   ],
