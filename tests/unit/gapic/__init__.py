@@ -13,24 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .common import (
-    GenerateAccessTokenRequest,
-    GenerateAccessTokenResponse,
-    GenerateIdTokenRequest,
-    GenerateIdTokenResponse,
-    SignBlobRequest,
-    SignBlobResponse,
-    SignJwtRequest,
-    SignJwtResponse,
-)
-
-__all__ = (
-    'GenerateAccessTokenRequest',
-    'GenerateAccessTokenResponse',
-    'GenerateIdTokenRequest',
-    'GenerateIdTokenResponse',
-    'SignBlobRequest',
-    'SignBlobResponse',
-    'SignJwtRequest',
-    'SignJwtResponse',
-)

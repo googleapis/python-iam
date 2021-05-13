@@ -13,13 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-
-__protobuf__ = proto.module(
-    package='google.iam.credentials.v1',
-    manifest={
-    },
-)
-
-
-__all__ = tuple(sorted(__protobuf__.manifest))
