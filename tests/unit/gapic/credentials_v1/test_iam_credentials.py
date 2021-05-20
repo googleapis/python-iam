@@ -647,7 +647,7 @@ def test_generate_access_token_flattened():
         assert args[0].name == "name_value"
         assert args[0].delegates == ["delegates_value"]
         assert args[0].scope == ["scope_value"]
-        assert args[0].lifetime == duration_pb2.Duration(seconds=751)
+        # assert args[0].lifetime == duration_pb2.Duration(seconds=751)
 
 
 def test_generate_access_token_flattened_error():
@@ -697,7 +697,7 @@ async def test_generate_access_token_flattened_async():
         assert args[0].name == "name_value"
         assert args[0].delegates == ["delegates_value"]
         assert args[0].scope == ["scope_value"]
-        assert args[0].lifetime == duration_pb2.Duration(seconds=751)
+        # assert args[0].lifetime == duration_pb2.Duration(seconds=751)
 
 
 @pytest.mark.asyncio
