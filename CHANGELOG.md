@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-iam/#history
 
+### [2.2.1](https://www.github.com/googleapis/python-iam/compare/v2.2.0...v2.2.1) (2021-06-22)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-iam/issues/1127)) ([#84](https://www.github.com/googleapis/python-iam/issues/84)) ([b30f69e](https://www.github.com/googleapis/python-iam/commit/b30f69eec8ade3087652d34013e7a55c05bbe6dd))
+
 ## [2.2.0](https://www.github.com/googleapis/python-iam/compare/v2.1.0...v2.2.0) (2021-05-28)
 
 
