@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-iam/#history
 
+### [2.3.1](https://www.github.com/googleapis/python-iam/compare/v2.3.0...v2.3.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#98](https://www.github.com/googleapis/python-iam/issues/98)) ([4d37f49](https://www.github.com/googleapis/python-iam/commit/4d37f496d529d60443dab2f8812d0859abed3979))
+
 ## [2.3.0](https://www.github.com/googleapis/python-iam/compare/v2.2.0...v2.3.0) (2021-07-01)
 
 
