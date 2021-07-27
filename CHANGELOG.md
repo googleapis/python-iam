@@ -13,10 +13,14 @@
 * enable self signed jwt for grpc ([#104](https://www.github.com/googleapis/python-iam/issues/104)) ([d40d70e](https://www.github.com/googleapis/python-iam/commit/d40d70e84a35e00f946a8b30591869a7829b7398))
 
 
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#99](https://www.github.com/googleapis/python-iam/issues/99)) ([8c0c465](https://www.github.com/googleapis/python-iam/commit/8c0c465225aa7398caa31f50a2ed0788cbc7140e))
+
+
 ### Miscellaneous Chores
 
 * release as 2.3.1 ([#103](https://www.github.com/googleapis/python-iam/issues/103)) ([e5a3d4b](https://www.github.com/googleapis/python-iam/commit/e5a3d4b3951e413db7be208ce853c779ff3d4571))
-* add Samples section to CONTRIBUTING.rst ([#99](https://www.github.com/googleapis/python-iam/issues/99)) ([8c0c465](https://www.github.com/googleapis/python-iam/commit/8c0c465225aa7398caa31f50a2ed0788cbc7140e))
 
 ## [2.3.0](https://www.github.com/googleapis/python-iam/compare/v2.2.0...v2.3.0) (2021-07-01)
 
