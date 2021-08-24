@@ -98,7 +98,7 @@ s.replace(
 )
 
 s.replace(
-  "docs/*",
+  "docs/conf.py",
   "master",
   "main"
 )
