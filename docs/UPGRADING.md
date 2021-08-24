@@ -72,7 +72,7 @@ In `google-cloud-iam<2.0.0`, parameters required by the API were positional para
 
 In the 2.0.0 release, all methods have a single positional parameter `request`. Method docstrings indicate whether a parameter is required or optional.
 
-Some methods have additional keyword only parameters. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/master/google/iam/credentials/v1/iamcredentials.proto#L49) specified by the API producer.
+Some methods have additional keyword only parameters. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/main/google/iam/credentials/v1/iamcredentials.proto#L49) specified by the API producer.
 
 
 **After:**
