@@ -10,6 +10,6 @@
     "repo": "googleapis/python-iam",
     "distribution_name": "google-cloud-iam",
     "api_id": "iam.googleapis.com",
-    "default_version": "",
+    "default_version": "v1",
     "codeowner_team": ""
 }
