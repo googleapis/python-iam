@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-iam/#history
 
+## [0.3.2](https://github.com/googleapis/python-iam/compare/v0.3.1...v0.3.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf<4.0.0 on v0 branch ([#199](https://github.com/googleapis/python-iam/issues/199)) ([3382afb](https://github.com/googleapis/python-iam/commit/3382afb2bb61d153c8c5b83655201030c1c77c3b))
+
 ### [0.3.1](https://github.com/googleapis/python-iam/compare/v0.3.0...v0.3.1) (2022-04-01)
 
 
