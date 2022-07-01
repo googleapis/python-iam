@@ -14,6 +14,7 @@
 
 import os
 import re
+import uuid
 
 import pytest
 from _pytest.capture import CaptureFixture
@@ -26,25 +27,33 @@ GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 
 @pytest.fixture
-def deny_policy():
-    policy_name = "limit-project-deletion"
+def deny_policy(capsys: CaptureFixture) -> None:
+    policy_id = f"limit-project-deletion-{uuid.uuid4()}"
 
-    create_deny_policy(PROJECT_ID, policy_name)
+    # Create the Deny policy.
+    create_deny_policy(PROJECT_ID, policy_id)
 
-    yield policy_name
+    yield policy_id
 
-    delete_deny_policy(PROJECT_ID, policy_name)
-
-
-def test_retrieve_and_update_policy(capsys: CaptureFixture, deny_policy):
-    get_deny_policy(PROJECT_ID, deny_policy)
+    # Delete the Deny policy and assert if deleted.
+    delete_deny_policy(PROJECT_ID, policy_id)
     out, _ = capsys.readouterr()
-    assert re.search("Retrieved the deny policy", out)
+    assert re.search(f"Deleted the deny policy: {policy_id}", out)
 
+
+def test_retrieve_list_and_update_policy(capsys: CaptureFixture, deny_policy) -> None:
+    # Test policy retrieval, given the policy id.
+    policy = get_deny_policy(PROJECT_ID, deny_policy)
+    out, _ = capsys.readouterr()
+    assert re.search(f"Retrieved the deny policy: {deny_policy}", out)
+
+    # Check if the created policy is listed.
     list_deny_policy(PROJECT_ID)
     out, _ = capsys.readouterr()
+    assert re.search(deny_policy, out)
     assert re.search("Listed all deny policies", out)
 
-    update_deny_policy(PROJECT_ID, deny_policy)
+    # Check if the policy rule is updated.
+    update_deny_policy(PROJECT_ID, deny_policy, policy.etag)
     out, _ = capsys.readouterr()
-    assert re.search("Updated the deny policy", out)
+    assert re.search(f"Updated the deny policy: {deny_policy}", out)
