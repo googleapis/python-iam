@@ -1971,7 +1971,6 @@ def test_iam_credentials_transport_auth_adc(transport_class):
     [
         transports.IAMCredentialsGrpcTransport,
         transports.IAMCredentialsGrpcAsyncIOTransport,
-        transports.IAMCredentialsRestTransport,
     ],
 )
 def test_iam_credentials_transport_auth_gdch_credentials(transport_class):
