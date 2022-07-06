@@ -16,8 +16,8 @@ import os
 import re
 import uuid
 
-import pytest
 from _pytest.capture import CaptureFixture
+import pytest
 
 from samples.snippets.deny_policies import create_deny_policy, delete_deny_policy, get_deny_policy, list_deny_policy, \
     update_deny_policy
