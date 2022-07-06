@@ -59,7 +59,9 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
     # Set the permissions to deny.
     # The permission value is of the format: service_fqdn/resource.action
     # For the list of supported permissions, see: https://cloud.google.com/iam/docs/deny-permissions-support
-    deny_rule.denied_permissions = ["cloudresourcemanager.googleapis.com/projects.delete"]
+    deny_rule.denied_permissions = [
+        "cloudresourcemanager.googleapis.com/projects.delete"
+    ]
 
     # Optionally, add the permissions to be exempted from this rule.
     # Meaning, the deny rule will not be applicable to these permissions.
@@ -219,7 +221,9 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     # Set the permissions to deny.
     # The permission value is of the format: service_fqdn/resource.action
     # For the list of supported permissions, see: https://cloud.google.com/iam/docs/deny-permissions-support
-    deny_rule.denied_permissions = ["cloudresourcemanager.googleapis.com/projects.delete"]
+    deny_rule.denied_permissions = [
+        "cloudresourcemanager.googleapis.com/projects.delete"
+    ]
 
     # Add the permissions to be exempted from this rule.
     # Meaning, the deny rule will not be applicable to these permissions.

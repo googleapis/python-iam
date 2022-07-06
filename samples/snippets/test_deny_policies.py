@@ -18,9 +18,13 @@ import uuid
 
 from _pytest.capture import CaptureFixture
 import pytest
-
-from samples.snippets.deny_policies import create_deny_policy, delete_deny_policy, get_deny_policy, list_deny_policy, \
-    update_deny_policy
+from samples.snippets.deny_policies import (
+    create_deny_policy,
+    delete_deny_policy,
+    get_deny_policy,
+    list_deny_policy,
+    update_deny_policy,
+)
 
 PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
