@@ -16,8 +16,8 @@
 def create_deny_policy(project_id: str, policy_id: str) -> None:
     from google.cloud import iam_v2beta
     from google.cloud.iam_v2beta import Policy, types
-
     from google.type import expr_pb2
+
     """
       Create a deny policy.
       You can add deny policies to organizations, folders, and projects.
@@ -99,6 +99,8 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
     # Build the create policy request.
     policies_client.create_policy(request=request)
     print(f"Created the deny policy: {policy_id}")
+
+
 # [END iam_create_deny_policy]
 
 
@@ -138,6 +140,8 @@ def list_deny_policy(project_id: str) -> None:
     for policy in policies:
         print(policy.name)
     print("Listed all deny policies")
+
+
 # [END iam_list_deny_policy]
 
 
@@ -175,6 +179,8 @@ def get_deny_policy(project_id: str, policy_id: str):
     policy = policies_client.get_policy(request=request)
     print(f"Retrieved the deny policy: {policy_id} : {policy}")
     return policy
+
+
 # [END iam_get_deny_policy]
 
 
@@ -182,8 +188,8 @@ def get_deny_policy(project_id: str, policy_id: str):
 def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     from google.cloud import iam_v2beta
     from google.cloud.iam_v2beta import types
-
     from google.type import expr_pb2
+
     """
     Update the deny rules and/ or its display name after policy creation.
 
@@ -260,6 +266,8 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 
     policies_client.update_policy(request=request)
     print(f"Updated the deny policy: {policy_id}")
+
+
 # [START iam_update_deny_policy]
 
 
@@ -296,6 +304,8 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     # Create the DeletePolicy request.
     policies_client.delete_policy(request=request)
     print(f"Deleted the deny policy: {policy_id}")
+
+
 # [START iam_delete_deny_policy]
 
 
