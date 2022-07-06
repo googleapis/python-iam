@@ -268,7 +268,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     print(f"Updated the deny policy: {policy_id}")
 
 
-# [START iam_update_deny_policy]
+# [END iam_update_deny_policy]
 
 
 # [START iam_delete_deny_policy]
@@ -306,7 +306,7 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     print(f"Deleted the deny policy: {policy_id}")
 
 
-# [START iam_delete_deny_policy]
+# [END iam_delete_deny_policy]
 
 
 if __name__ == "__main__":
