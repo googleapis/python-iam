@@ -25,7 +25,7 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
 
       Deny policies contain deny rules, which specify the following:
       1. The permissions to deny and/or exempt.
-      2. The principals that are denied/exempted from those permissions.
+      2. The principals that are denied, or exempted from denial.
       3. An optional condition on when to enforce the deny rules.
 
       Params:
@@ -42,23 +42,23 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
     # 2. cloudresourcemanager.googleapis.com/folders/FOLDER_ID
     # 3. cloudresourcemanager.googleapis.com/projects/PROJECT_ID
     #
-    # The attachment point is identified by its URL-encoded full resource name. Hence, replace
+    # The attachment point is identified by its URL-encoded resource name. Hence, replace
     # the "/" with "%2F".
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     deny_rule = types.DenyRule()
     # Add one or more principals who should be denied the permissions specified in this rule.
-    # For more information on allowed values, see: https://cloud.google.com/iam/docs/principal-identifiers#v2
+    # For more information on allowed values, see: https://cloud.google.com/iam/docs/principal-identifiers
     deny_rule.denied_principals = ["principalSet://goog/public:all"]
 
-    # Optionally, set the principals who should be exempted from the list of principals
-    # added in "DeniedPrincipals". Example, if you want to deny certain permissions
-    # to a group but exempt few principals, then add those here.
+    # Optionally, set the principals who should be exempted from the
+    # list of denied principals. For example, if you want to deny certain permissions
+    # to a group but exempt a few principals, then add those here.
     # deny_rule.exception_principals = ["principalSet://goog/group/project-admins@example.com"]
 
     # Set the permissions to deny.
     # The permission value is of the format: service_fqdn/resource.action
-    # For the list of supported permissions, see: https://cloud.google.com/iam/docs/deny-permissions-support
+    # For the list of supported permissions, see: https://cloud.google.com/iam/help/deny/supported-permissions
     deny_rule.denied_permissions = [
         "cloudresourcemanager.googleapis.com/projects.delete"
     ]
@@ -79,7 +79,7 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
         expression="!resource.matchTag('12345678/env', 'test')"
     )
 
-    # Add the policy rule and a description for it.
+    # Add the deny rule and a description for it.
     policy_rule = types.PolicyRule()
     policy_rule.description = "block all principals from deleting projects, unless the principal is a member of project-admins@example.com and the project being deleted has a tag with the value test"
     policy_rule.deny_rule = deny_rule
@@ -88,9 +88,9 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
     policy.display_name = "Restrict project deletion access"
     policy.rules = [policy_rule]
 
-    # Set the policy resource path, policy rules and a unique id for the policy.
+    # Set the policy resource path, policy rules and a unique ID for the policy.
     request = types.CreatePolicyRequest()
-    # Construct the full path of the resource to which the policy is attached to.
+    # Construct the full path of the resource to which the policy is attached.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.parent = f"policies/{attachment_point}/denypolicies"
     request.policy = policy
@@ -125,12 +125,12 @@ def list_deny_policy(project_id: str) -> None:
     # 2. cloudresourcemanager.googleapis.com/folders/FOLDER_ID
     # 3. cloudresourcemanager.googleapis.com/projects/PROJECT_ID
     #
-    # The attachment point is identified by its URL-encoded full resource name. Hence, replace
+    # The attachment point is identified by its URL-encoded resource name. Hence, replace
     # the "/" with "%2F".
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.ListPoliciesRequest()
-    # Construct the full path of the resource to which the policy is attached to.
+    # Construct the full path of the resource to which the policy is attached.
     # Its format is: "policies/{attachmentPoint}/denypolicies"
     request.parent = f"policies/{attachment_point}/denypolicies"
 
@@ -151,10 +151,10 @@ def get_deny_policy(project_id: str, policy_id: str):
     from google.cloud.iam_v2beta import Policy, types
 
     """
-    Retrieve the deny policy given the project id and policy id.
+    Retrieve the deny policy given the project ID and policy ID.
 
     project_id: ID or number of the Google Cloud project you want to use.
-    policy_id: Specify the id of the deny policy you want to retrieve.
+    policy_id: Specify the ID of the deny policy you want to retrieve.
     """
     policies_client = iam_v2beta.PoliciesClient()
 
@@ -166,12 +166,12 @@ def get_deny_policy(project_id: str, policy_id: str):
     # 2. cloudresourcemanager.googleapis.com/folders/FOLDER_ID
     # 3. cloudresourcemanager.googleapis.com/projects/PROJECT_ID
     #
-    # The attachment point is identified by its URL-encoded full resource name. Hence, replace
+    # The attachment point is identified by its URL-encoded resource name. Hence, replace
     # the "/" with "%2F".
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.GetPolicyRequest()
-    # Construct the full path of the resource to which the policy is attached to.
+    # Construct the full path of the resource to which the policy is attached.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
 
@@ -195,7 +195,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 
     project_id: ID or number of the Google Cloud project you want to use.
 
-    policy_id: Specify the id of the Deny policy you want to retrieve.
+    policy_id: Specify the ID of the Deny policy you want to retrieve.
 
     etag: Etag field that identifies the policy version. The etag changes each time
     you update the policy. Get the etag of an existing policy by performing a GetPolicy request.
@@ -210,23 +210,23 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     # 2. cloudresourcemanager.googleapis.com/folders/FOLDER_ID
     # 3. cloudresourcemanager.googleapis.com/projects/PROJECT_ID
     #
-    # The attachment point is identified by its URL-encoded full resource name. Hence, replace
+    # The attachment point is identified by its URL-encoded resource name. Hence, replace
     # the "/" with "%2F".
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     deny_rule = types.DenyRule()
 
     # Add one or more principals who should be denied the permissions specified in this rule.
-    # For more information on allowed values, see: https://cloud.google.com/iam/docs/principal-identifiers#v2
+    # For more information on allowed values, see: https://cloud.google.com/iam/docs/principal-identifiers
     deny_rule.denied_principals = ["principalSet://goog/public:all"]
 
     # Optionally, set the principals who should be exempted from the list of principals added in "DeniedPrincipals".
-    # Example, if you want to deny certain permissions to a group but exempt few principals, then add those here.
+    # Example, if you want to deny certain permissions to a group but exempt a few principals, then add those here.
     # deny_rule.exception_principals = ["principalSet://goog/group/project-admins@example.com"]
 
     # Set the permissions to deny.
     # The permission value is of the format: service_fqdn/resource.action
-    # For the list of supported permissions, see: https://cloud.google.com/iam/docs/deny-permissions-support
+    # For the list of supported permissions, see: https://cloud.google.com/iam/help/deny/supported-permissions
     deny_rule.denied_permissions = [
         "cloudresourcemanager.googleapis.com/projects.delete"
     ]
@@ -252,7 +252,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     policy_rule.description = "block all principals from deleting projects, unless the principal is a member of project-admins@example.com and the project being deleted has a tag with the value prod"
     policy_rule.deny_rule = deny_rule
 
-    # Set the policy resource path, version (etag) and the updated policy rules.
+    # Set the policy resource path, version (etag) and the updated deny rules.
     policy = types.Policy()
     # Construct the full path of the resource to which the policy is attached to.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
@@ -280,7 +280,7 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     Delete the policy if you no longer want to enforce the rules in a deny policy.
 
     project_id: ID or number of the Google Cloud project you want to use.
-    policy_id: Specify the id of the deny policy you want to retrieve.
+    policy_id: Specify the ID of the deny policy you want to retrieve.
     """
     policies_client = iam_v2beta.PoliciesClient()
 
@@ -292,12 +292,12 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     # 2. cloudresourcemanager.googleapis.com/folders/FOLDER_ID
     # 3. cloudresourcemanager.googleapis.com/projects/PROJECT_ID
     #
-    # The attachment point is identified by its URL-encoded full resource name. Hence, replace
+    # The attachment point is identified by its URL-encoded resource name. Hence, replace
     # the "/" with "%2F".
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.DeletePolicyRequest()
-    # Construct the full path of the resource to which the policy is attached to.
+    # Construct the full path of the resource to which the policy is attached.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
 
