@@ -21,7 +21,7 @@ import setuptools
 
 name = "google-cloud-iam"
 description = "IAM Service Account Credentials API client library"
-version = "2.6.2"
+version = "2.7.0"
 # Should be one of:
 # 'Development Status :: 3 - Alpha'
 # 'Development Status :: 4 - Beta'
@@ -64,7 +64,6 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
@@ -77,7 +76,7 @@ setuptools.setup(
     namespace_packages=namespaces,
     install_requires=dependencies,
     extras_require={"fixup": ["libcst >= 0.2.5"]},
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     scripts=["scripts/fixup_iam_credentials_v1_keywords.py"],
     include_package_data=True,
     zip_safe=False,
