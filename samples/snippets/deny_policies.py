@@ -90,7 +90,7 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
 
     # Set the policy resource path, policy rules and a unique ID for the policy.
     request = types.CreatePolicyRequest()
-    # Construct the full path of the resource to which the policy is attached.
+    # Construct the full path of the policy.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.parent = f"policies/{attachment_point}/denypolicies"
     request.policy = policy
@@ -171,11 +171,11 @@ def get_deny_policy(project_id: str, policy_id: str):
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.GetPolicyRequest()
-    # Construct the full path of the resource to which the policy is attached.
+    # Construct the full path of the policy.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
 
-    # Specify the policyParent and execute the GetPolicy request.
+    # Execute the GetPolicy request.
     policy = policies_client.get_policy(request=request)
     print(f"Retrieved the deny policy: {policy_id} : {policy}")
     return policy
@@ -195,7 +195,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 
     project_id: ID or number of the Google Cloud project you want to use.
 
-    policy_id: Specify the ID of the Deny policy you want to retrieve.
+    policy_id: Specify the ID of the deny policy you want to retrieve.
 
     etag: Etag field that identifies the policy version. The etag changes each time
     you update the policy. Get the etag of an existing policy by performing a GetPolicy request.
@@ -254,7 +254,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 
     # Set the policy resource path, version (etag) and the updated deny rules.
     policy = types.Policy()
-    # Construct the full path of the resource to which the policy is attached to.
+    # Construct the full path of the policy.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     policy.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
     policy.etag = etag
@@ -297,7 +297,7 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.DeletePolicyRequest()
-    # Construct the full path of the resource to which the policy is attached.
+    # Construct the full path of the policy.
     # Its format is: "policies/{attachmentPoint}/denypolicies/{policyId}"
     request.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
 
