@@ -21,7 +21,7 @@ from samples.snippets.get_deny_policy import get_deny_policy
 from samples.snippets.list_deny_policies import list_deny_policy
 from samples.snippets.update_deny_policy import update_deny_policy
 
-PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
+PROJECT_ID = os.environ["PROJECT_ID"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 
