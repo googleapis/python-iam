@@ -14,50 +14,35 @@
 
 import os
 import re
-import uuid
 
 from _pytest.capture import CaptureFixture
-import pytest
-from samples.snippets.deny_policies import (
-    create_deny_policy,
-    delete_deny_policy,
-    get_deny_policy,
-    list_deny_policy,
-    update_deny_policy,
-)
+
+from samples.snippets.get_deny_policy import get_deny_policy
+from samples.snippets.list_deny_policies import list_deny_policy
+from samples.snippets.update_deny_policy import update_deny_policy
 
 PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 
-@pytest.fixture
-def deny_policy(capsys: CaptureFixture) -> None:
-    policy_id = f"limit-project-deletion-{uuid.uuid4()}"
-
-    # Create the Deny policy.
-    create_deny_policy(PROJECT_ID, policy_id)
-
-    yield policy_id
-
-    # Delete the Deny policy and assert if deleted.
-    delete_deny_policy(PROJECT_ID, policy_id)
-    out, _ = capsys.readouterr()
-    assert re.search(f"Deleted the deny policy: {policy_id}", out)
-
-
-def test_retrieve_list_and_update_policy(capsys: CaptureFixture, deny_policy) -> None:
+def test_retrieve_policy(capsys: CaptureFixture, deny_policy) -> None:
     # Test policy retrieval, given the policy id.
-    policy = get_deny_policy(PROJECT_ID, deny_policy)
+    get_deny_policy(PROJECT_ID, deny_policy)
     out, _ = capsys.readouterr()
     assert re.search(f"Retrieved the deny policy: {deny_policy}", out)
 
+
+def test_list_policies(capsys: CaptureFixture, deny_policy) -> None:
     # Check if the created policy is listed.
     list_deny_policy(PROJECT_ID)
     out, _ = capsys.readouterr()
     assert re.search(deny_policy, out)
     assert re.search("Listed all deny policies", out)
 
+
+def test_update_deny_policy(capsys: CaptureFixture, deny_policy) -> None:
     # Check if the policy rule is updated.
+    policy = get_deny_policy(PROJECT_ID, deny_policy)
     update_deny_policy(PROJECT_ID, deny_policy, policy.etag)
     out, _ = capsys.readouterr()
     assert re.search(f"Updated the deny policy: {deny_policy}", out)
