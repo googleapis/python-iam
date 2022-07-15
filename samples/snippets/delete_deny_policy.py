@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file contains code samples that demonstrate how to work with IAM client library's Deny feature.
+# This file contains code samples that demonstrate how to delete IAM deny policies.
 
 # [START iam_delete_deny_policy]
 def delete_deny_policy(project_id: str, policy_id: str) -> None:
@@ -23,7 +23,7 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     Delete the policy if you no longer want to enforce the rules in a deny policy.
 
     project_id: ID or number of the Google Cloud project you want to use.
-    policy_id: Specify the ID of the deny policy you want to retrieve.
+    policy_id: The ID of the deny policy you want to retrieve.
     """
     policies_client = iam_v2beta.PoliciesClient()
 
@@ -52,9 +52,9 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
 if __name__ == "__main__":
     import uuid
 
-    # Your Google Cloud project id.
+    # Your Google Cloud project ID.
     project_id = "your-google-cloud-project-id"
-    # Any unique id (0 to 63 chars) starting with a lowercase alphabet.
+    # Any unique ID (0 to 63 chars) starting with a lowercase letter.
     policy_id = f"deny-{uuid.uuid4()}"
 
     delete_deny_policy(project_id, policy_id)

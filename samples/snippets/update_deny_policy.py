@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file contains code samples that demonstrate how to work with IAM client library's Deny feature.
+# This file contains code samples that demonstrate how to update IAM deny policies.
 
 # [START iam_update_deny_policy]
 def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
@@ -25,7 +25,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 
     project_id: ID or number of the Google Cloud project you want to use.
 
-    policy_id: Specify the ID of the deny policy you want to retrieve.
+    policy_id: The ID of the deny policy you want to retrieve.
 
     etag: Etag field that identifies the policy version. The etag changes each time
     you update the policy. Get the etag of an existing policy by performing a GetPolicy request.
@@ -47,7 +47,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     deny_rule = types.DenyRule()
 
     # Add one or more principals who should be denied the permissions specified in this rule.
-    # For more information on allowed values, see: https://cloud.google.com/iam/docs/principal-identifiers
+    # For more information on allowed values, see: https://cloud.google.com/iam/help/deny/principal-identifiers
     deny_rule.denied_principals = ["principalSet://goog/public:all"]
 
     # Optionally, set the principals who should be exempted from the list of principals added in "DeniedPrincipals".
@@ -70,12 +70,12 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     #
     # The expression uses Common Expression Language syntax (CEL). Here we block access based on tags.
     #
-    # A tag is a key-value pair that can be attached to an organization, folder, or project. You can use deny policies to deny permissions based on tags without adding an IAM Condition to every role grant.
-    # For example, imagine that you tag all of your projects as dev, test, or prod. You want only members of project-admins@example.com to be able to perform operations on projects that are tagged prod.
-    # To solve this problem, you create a deny rule that denies the cloudresourcemanager.googleapis.com/projects.delete permission to everyone except project-admins@example.com for resources that are tagged prod.
-    deny_rule.denial_condition = expr_pb2.Expr(
-        expression="!resource.matchTag('12345678/env', 'prod')"
-    )
+    # Here, we create a deny rule that denies the cloudresourcemanager.googleapis.com/projects.delete permission to everyone except project-admins@example.com for resources that are tagged prod.
+    # A tag is a key-value pair that can be attached to an organization, folder, or project.
+    # For more info, see: https://cloud.google.com/iam/docs/deny-access#create-deny-policy
+    deny_rule.denial_condition = {
+        "expression": "!resource.matchTag('12345678/env', 'prod')"
+    }
 
     # Set the rule description and deny rule to update.
     policy_rule = types.PolicyRule()
@@ -101,9 +101,9 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
 if __name__ == "__main__":
     import uuid
 
-    # Your Google Cloud project id.
+    # Your Google Cloud project ID.
     project_id = "your-google-cloud-project-id"
-    # Any unique id (0 to 63 chars) starting with a lowercase alphabet.
+    # Any unique ID (0 to 63 chars) starting with a lowercase letter.
     policy_id = f"deny-{uuid.uuid4()}"
     # Get the etag by performing a Get policy request.
     etag = "etag"

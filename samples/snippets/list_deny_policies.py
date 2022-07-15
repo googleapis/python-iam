@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file contains code samples that demonstrate how to work with IAM client library's Deny feature.
+# This file contains code samples that demonstrate how to list IAM deny policies.
 
 # [START iam_list_deny_policy]
 def list_deny_policy(project_id: str) -> None:
@@ -40,7 +40,7 @@ def list_deny_policy(project_id: str) -> None:
     attachment_point = f"cloudresourcemanager.googleapis.com%2Fprojects%2F{project_id}"
 
     request = types.ListPoliciesRequest()
-    # Construct the full path of the resource to which the policy is attached.
+    # Construct the full path of the resource's deny policies.
     # Its format is: "policies/{attachmentPoint}/denypolicies"
     request.parent = f"policies/{attachment_point}/denypolicies"
 
@@ -55,9 +55,9 @@ def list_deny_policy(project_id: str) -> None:
 if __name__ == "__main__":
     import uuid
 
-    # Your Google Cloud project id.
+    # Your Google Cloud project ID.
     project_id = "your-google-cloud-project-id"
-    # Any unique id (0 to 63 chars) starting with a lowercase alphabet.
+    # Any unique ID (0 to 63 chars) starting with a lowercase letter.
     policy_id = f"deny-{uuid.uuid4()}"
 
     list_deny_policy(project_id)
