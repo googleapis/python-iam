@@ -1046,13 +1046,13 @@ class PoliciesClient(metaclass=PoliciesClientMeta):
                 certain GCP Resource, specified by the field
                 `attachment_point`, found on this message.
                 Example:
-                ```
-                {
-                   attachment_point:
-                'cloudresourcemanager.googleapis.com%2Forganizations%2F212345678901'
-                filter: 'kind:denyPolicies'
-                }
-                ```
+                    ```
+                    {
+                    attachment_point:
+                    'cloudresourcemanager.googleapis.com%2Forganizations%2F212345678901'
+                    filter: 'kind:denyPolicies'
+                    }
+                    ```
             attachment_point (str):
                 Required. The Cloud resource at which the applicable
                 policies are to be retrieved. Format:

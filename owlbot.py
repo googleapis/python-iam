@@ -65,6 +65,26 @@ iam_credentials_default_version = "v1"
 iam_default_version = "v2"
 
 for library in get_staging_dirs(iam_default_version, "iam"):
+    s.replace(
+        # workaround docstring formatting issues
+        library / "google/cloud/iam_v2/services/policies/*client.py",
+                """
+                ```
+                \{
+                   attachment_point:
+                'cloudresourcemanager.googleapis.com%2Forganizations%2F212345678901'
+                filter: 'kind:denyPolicies'
+                \}
+                ```""",
+                """
+                    ```
+                    {
+                    attachment_point:
+                    'cloudresourcemanager.googleapis.com%2Forganizations%2F212345678901'
+                    filter: 'kind:denyPolicies'
+                    }
+                    ```""",
+        )
     s.move([library], excludes=["setup.py", "README.rst", "docs/index.rst", "google/cloud/iam/**",])
 
 for library in get_staging_dirs(iam_credentials_default_version, "iamcredentials"):
