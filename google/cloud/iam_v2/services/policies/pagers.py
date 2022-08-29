@@ -24,14 +24,14 @@ from typing import (
     Tuple,
 )
 
-from google.iam_v2.types import policy
+from google.cloud.iam_v2.types import policy
 
 
 class ListPoliciesPager:
     """A pager for iterating through ``list_policies`` requests.
 
     This class thinly wraps an initial
-    :class:`google.iam_v2.types.ListPoliciesResponse` object, and
+    :class:`google.cloud.iam_v2.types.ListPoliciesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``policies`` field.
 
@@ -40,7 +40,7 @@ class ListPoliciesPager:
     through the ``policies`` field on the
     corresponding responses.
 
-    All the usual :class:`google.iam_v2.types.ListPoliciesResponse`
+    All the usual :class:`google.cloud.iam_v2.types.ListPoliciesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -58,9 +58,9 @@ class ListPoliciesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.iam_v2.types.ListPoliciesRequest):
+            request (google.cloud.iam_v2.types.ListPoliciesRequest):
                 The initial request object.
-            response (google.iam_v2.types.ListPoliciesResponse):
+            response (google.cloud.iam_v2.types.ListPoliciesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -93,7 +93,7 @@ class ListPoliciesAsyncPager:
     """A pager for iterating through ``list_policies`` requests.
 
     This class thinly wraps an initial
-    :class:`google.iam_v2.types.ListPoliciesResponse` object, and
+    :class:`google.cloud.iam_v2.types.ListPoliciesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``policies`` field.
 
@@ -102,7 +102,7 @@ class ListPoliciesAsyncPager:
     through the ``policies`` field on the
     corresponding responses.
 
-    All the usual :class:`google.iam_v2.types.ListPoliciesResponse`
+    All the usual :class:`google.cloud.iam_v2.types.ListPoliciesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -120,9 +120,9 @@ class ListPoliciesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.iam_v2.types.ListPoliciesRequest):
+            request (google.cloud.iam_v2.types.ListPoliciesRequest):
                 The initial request object.
-            response (google.iam_v2.types.ListPoliciesResponse):
+            response (google.cloud.iam_v2.types.ListPoliciesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -159,7 +159,7 @@ class ListApplicablePoliciesPager:
     """A pager for iterating through ``list_applicable_policies`` requests.
 
     This class thinly wraps an initial
-    :class:`google.iam_v2.types.ListApplicablePoliciesResponse` object, and
+    :class:`google.cloud.iam_v2.types.ListApplicablePoliciesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``policies`` field.
 
@@ -168,7 +168,7 @@ class ListApplicablePoliciesPager:
     through the ``policies`` field on the
     corresponding responses.
 
-    All the usual :class:`google.iam_v2.types.ListApplicablePoliciesResponse`
+    All the usual :class:`google.cloud.iam_v2.types.ListApplicablePoliciesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -186,9 +186,9 @@ class ListApplicablePoliciesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.iam_v2.types.ListApplicablePoliciesRequest):
+            request (google.cloud.iam_v2.types.ListApplicablePoliciesRequest):
                 The initial request object.
-            response (google.iam_v2.types.ListApplicablePoliciesResponse):
+            response (google.cloud.iam_v2.types.ListApplicablePoliciesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -221,7 +221,7 @@ class ListApplicablePoliciesAsyncPager:
     """A pager for iterating through ``list_applicable_policies`` requests.
 
     This class thinly wraps an initial
-    :class:`google.iam_v2.types.ListApplicablePoliciesResponse` object, and
+    :class:`google.cloud.iam_v2.types.ListApplicablePoliciesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``policies`` field.
 
@@ -230,7 +230,7 @@ class ListApplicablePoliciesAsyncPager:
     through the ``policies`` field on the
     corresponding responses.
 
-    All the usual :class:`google.iam_v2.types.ListApplicablePoliciesResponse`
+    All the usual :class:`google.cloud.iam_v2.types.ListApplicablePoliciesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -248,9 +248,9 @@ class ListApplicablePoliciesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.iam_v2.types.ListApplicablePoliciesRequest):
+            request (google.cloud.iam_v2.types.ListApplicablePoliciesRequest):
                 The initial request object.
-            response (google.iam_v2.types.ListApplicablePoliciesResponse):
+            response (google.cloud.iam_v2.types.ListApplicablePoliciesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.

@@ -16,7 +16,7 @@
 from google.protobuf import timestamp_pb2  # type: ignore
 import proto  # type: ignore
 
-from google.iam_v2.types import deny
+from google.cloud.iam_v2.types import deny
 
 __protobuf__ = proto.module(
     package="google.iam.v2",
@@ -82,7 +82,7 @@ class Policy(proto.Message):
         delete_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The time when the ``Policy`` was deleted. Empty
             if the policy is not deleted.
-        rules (Sequence[google.iam_v2.types.PolicyRule]):
+        rules (Sequence[google.cloud.iam_v2.types.PolicyRule]):
             A list of rules that specify the behavior of the ``Policy``.
             All of the rules should be of the ``kind`` specified in the
             ``Policy``.
@@ -149,7 +149,7 @@ class PolicyRule(proto.Message):
     .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
 
     Attributes:
-        deny_rule (google.iam_v2.types.DenyRule):
+        deny_rule (google.cloud.iam_v2.types.DenyRule):
             A rule for a deny policy.
 
             This field is a member of `oneof`_ ``kind``.
@@ -214,7 +214,7 @@ class ListPoliciesResponse(proto.Message):
     r"""Response message for ``ListPolicies``.
 
     Attributes:
-        policies (Sequence[google.iam_v2.types.Policy]):
+        policies (Sequence[google.cloud.iam_v2.types.Policy]):
             Metadata for the policies that are attached
             to the resource.
         next_page_token (str):
@@ -281,7 +281,7 @@ class CreatePolicyRequest(proto.Message):
             For organizations and folders, use the numeric ID in the
             full resource name. For projects, you can use the
             alphanumeric or the numeric ID.
-        policy (google.iam_v2.types.Policy):
+        policy (google.cloud.iam_v2.types.Policy):
             Required. The policy to create.
         policy_id (str):
             The ID to use for this policy, which will become the final
@@ -310,7 +310,7 @@ class UpdatePolicyRequest(proto.Message):
     r"""Request message for ``UpdatePolicy``.
 
     Attributes:
-        policy (google.iam_v2.types.Policy):
+        policy (google.cloud.iam_v2.types.Policy):
             Required. The policy to update.
 
             To prevent conflicting updates, the ``etag`` value must
@@ -431,7 +431,7 @@ class ListApplicablePoliciesResponse(proto.Message):
     r"""Response message for [ListApplicablePolicies][] method.
 
     Attributes:
-        policies (Sequence[google.iam_v2.types.Policy]):
+        policies (Sequence[google.cloud.iam_v2.types.Policy]):
             Ordered list starting from the resource on
             which this API was called then proceeding up the
             hierarchy. Policies for the same attachment

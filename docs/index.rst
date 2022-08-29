@@ -11,6 +11,21 @@ API Reference
     iam_v2/services
     iam_v2/types
 
+API Reference
+-------------
+.. toctree::
+    :maxdepth: 2
+
+    iam_credentials_v1/services
+    iam_credentials_v1/types
+
+API Reference
+-------------
+.. toctree::
+    :maxdepth: 2
+
+    iam_v2beta/services
+    iam_v2beta/types
 
 Migration Guide
 ---------------

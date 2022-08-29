@@ -1,5 +1,5 @@
-Services for Google Iam v2 API
-==============================
+Services for Google Cloud Iam v2 API
+====================================
 .. toctree::
     :maxdepth: 2
 

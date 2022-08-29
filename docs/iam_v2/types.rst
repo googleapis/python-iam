@@ -1,7 +1,7 @@
-Types for Google Iam v2 API
-===========================
+Types for Google Cloud Iam v2 API
+=================================
 
-.. automodule:: google.iam_v2.types
+.. automodule:: google.cloud.iam_v2.types
     :members:
     :undoc-members:
     :show-inheritance:

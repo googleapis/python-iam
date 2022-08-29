@@ -48,15 +48,15 @@ from grpc.experimental import aio
 from proto.marshal.rules.dates import DurationRule, TimestampRule
 import pytest
 
-from google.iam_v2.services.policies import (
+from google.cloud.iam_v2.services.policies import (
     PoliciesAsyncClient,
     PoliciesClient,
     pagers,
     transports,
 )
-from google.iam_v2.types import deny
-from google.iam_v2.types import policy
-from google.iam_v2.types import policy as gi_policy
+from google.cloud.iam_v2.types import deny
+from google.cloud.iam_v2.types import policy
+from google.cloud.iam_v2.types import policy as gi_policy
 
 
 def client_cert_source_callback():
@@ -579,7 +579,7 @@ def test_policies_client_client_options_credentials_file(
 
 def test_policies_client_client_options_from_dict():
     with mock.patch(
-        "google.iam_v2.services.policies.transports.PoliciesGrpcTransport.__init__"
+        "google.cloud.iam_v2.services.policies.transports.PoliciesGrpcTransport.__init__"
     ) as grpc_transport:
         grpc_transport.return_value = None
         client = PoliciesClient(client_options={"api_endpoint": "squid.clam.whelk"})
@@ -2515,7 +2515,7 @@ def test_policies_base_transport_error():
 def test_policies_base_transport():
     # Instantiate the base transport.
     with mock.patch(
-        "google.iam_v2.services.policies.transports.PoliciesTransport.__init__"
+        "google.cloud.iam_v2.services.policies.transports.PoliciesTransport.__init__"
     ) as Transport:
         Transport.return_value = None
         transport = transports.PoliciesTransport(
@@ -2559,7 +2559,7 @@ def test_policies_base_transport_with_credentials_file():
     with mock.patch.object(
         google.auth, "load_credentials_from_file", autospec=True
     ) as load_creds, mock.patch(
-        "google.iam_v2.services.policies.transports.PoliciesTransport._prep_wrapped_messages"
+        "google.cloud.iam_v2.services.policies.transports.PoliciesTransport._prep_wrapped_messages"
     ) as Transport:
         Transport.return_value = None
         load_creds.return_value = (ga_credentials.AnonymousCredentials(), None)
@@ -2578,7 +2578,7 @@ def test_policies_base_transport_with_credentials_file():
 def test_policies_base_transport_with_adc():
     # Test the default credentials are used if credentials and credentials_file are None.
     with mock.patch.object(google.auth, "default", autospec=True) as adc, mock.patch(
-        "google.iam_v2.services.policies.transports.PoliciesTransport._prep_wrapped_messages"
+        "google.cloud.iam_v2.services.policies.transports.PoliciesTransport._prep_wrapped_messages"
     ) as Transport:
         Transport.return_value = None
         adc.return_value = (ga_credentials.AnonymousCredentials(), None)

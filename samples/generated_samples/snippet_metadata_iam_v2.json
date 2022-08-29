@@ -7,7 +7,7 @@
       }
     ],
     "language": "PYTHON",
-    "name": "google-iam"
+    "name": "google-cloud-iam"
   },
   "snippets": [
     {
@@ -15,10 +15,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.create_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.create_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.CreatePolicy",
           "service": {
@@ -30,7 +30,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.CreatePolicyRequest"
+            "type": "google.cloud.iam_v2.types.CreatePolicyRequest"
           },
           {
             "name": "parent",
@@ -38,7 +38,7 @@
           },
           {
             "name": "policy",
-            "type": "google.iam_v2.types.Policy"
+            "type": "google.cloud.iam_v2.types.Policy"
           },
           {
             "name": "policy_id",
@@ -103,10 +103,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.create_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.create_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.CreatePolicy",
           "service": {
@@ -118,7 +118,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.CreatePolicyRequest"
+            "type": "google.cloud.iam_v2.types.CreatePolicyRequest"
           },
           {
             "name": "parent",
@@ -126,7 +126,7 @@
           },
           {
             "name": "policy",
-            "type": "google.iam_v2.types.Policy"
+            "type": "google.cloud.iam_v2.types.Policy"
           },
           {
             "name": "policy_id",
@@ -192,10 +192,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.delete_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.delete_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.DeletePolicy",
           "service": {
@@ -207,7 +207,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.DeletePolicyRequest"
+            "type": "google.cloud.iam_v2.types.DeletePolicyRequest"
           },
           {
             "name": "name",
@@ -272,10 +272,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.delete_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.delete_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.DeletePolicy",
           "service": {
@@ -287,7 +287,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.DeletePolicyRequest"
+            "type": "google.cloud.iam_v2.types.DeletePolicyRequest"
           },
           {
             "name": "name",
@@ -353,10 +353,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.get_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.get_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.GetPolicy",
           "service": {
@@ -368,7 +368,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.GetPolicyRequest"
+            "type": "google.cloud.iam_v2.types.GetPolicyRequest"
           },
           {
             "name": "name",
@@ -387,7 +387,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.types.Policy",
+        "resultType": "google.cloud.iam_v2.types.Policy",
         "shortName": "get_policy"
       },
       "description": "Sample for GetPolicy",
@@ -433,10 +433,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.get_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.get_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.GetPolicy",
           "service": {
@@ -448,7 +448,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.GetPolicyRequest"
+            "type": "google.cloud.iam_v2.types.GetPolicyRequest"
           },
           {
             "name": "name",
@@ -467,7 +467,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.types.Policy",
+        "resultType": "google.cloud.iam_v2.types.Policy",
         "shortName": "get_policy"
       },
       "description": "Sample for GetPolicy",
@@ -514,10 +514,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.list_applicable_policies",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.list_applicable_policies",
         "method": {
           "fullName": "google.iam.v2.Policies.ListApplicablePolicies",
           "service": {
@@ -529,7 +529,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.ListApplicablePoliciesRequest"
+            "type": "google.cloud.iam_v2.types.ListApplicablePoliciesRequest"
           },
           {
             "name": "attachment_point",
@@ -548,7 +548,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.services.policies.pagers.ListApplicablePoliciesAsyncPager",
+        "resultType": "google.cloud.iam_v2.services.policies.pagers.ListApplicablePoliciesAsyncPager",
         "shortName": "list_applicable_policies"
       },
       "description": "Sample for ListApplicablePolicies",
@@ -594,10 +594,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.list_applicable_policies",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.list_applicable_policies",
         "method": {
           "fullName": "google.iam.v2.Policies.ListApplicablePolicies",
           "service": {
@@ -609,7 +609,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.ListApplicablePoliciesRequest"
+            "type": "google.cloud.iam_v2.types.ListApplicablePoliciesRequest"
           },
           {
             "name": "attachment_point",
@@ -628,7 +628,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.services.policies.pagers.ListApplicablePoliciesPager",
+        "resultType": "google.cloud.iam_v2.services.policies.pagers.ListApplicablePoliciesPager",
         "shortName": "list_applicable_policies"
       },
       "description": "Sample for ListApplicablePolicies",
@@ -675,10 +675,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.list_policies",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.list_policies",
         "method": {
           "fullName": "google.iam.v2.Policies.ListPolicies",
           "service": {
@@ -690,7 +690,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.ListPoliciesRequest"
+            "type": "google.cloud.iam_v2.types.ListPoliciesRequest"
           },
           {
             "name": "parent",
@@ -709,7 +709,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.services.policies.pagers.ListPoliciesAsyncPager",
+        "resultType": "google.cloud.iam_v2.services.policies.pagers.ListPoliciesAsyncPager",
         "shortName": "list_policies"
       },
       "description": "Sample for ListPolicies",
@@ -755,10 +755,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.list_policies",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.list_policies",
         "method": {
           "fullName": "google.iam.v2.Policies.ListPolicies",
           "service": {
@@ -770,7 +770,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.ListPoliciesRequest"
+            "type": "google.cloud.iam_v2.types.ListPoliciesRequest"
           },
           {
             "name": "parent",
@@ -789,7 +789,7 @@
             "type": "Sequence[Tuple[str, str]"
           }
         ],
-        "resultType": "google.iam_v2.services.policies.pagers.ListPoliciesPager",
+        "resultType": "google.cloud.iam_v2.services.policies.pagers.ListPoliciesPager",
         "shortName": "list_policies"
       },
       "description": "Sample for ListPolicies",
@@ -836,10 +836,10 @@
       "clientMethod": {
         "async": true,
         "client": {
-          "fullName": "google.iam_v2.PoliciesAsyncClient",
+          "fullName": "google.cloud.iam_v2.PoliciesAsyncClient",
           "shortName": "PoliciesAsyncClient"
         },
-        "fullName": "google.iam_v2.PoliciesAsyncClient.update_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesAsyncClient.update_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.UpdatePolicy",
           "service": {
@@ -851,7 +851,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.UpdatePolicyRequest"
+            "type": "google.cloud.iam_v2.types.UpdatePolicyRequest"
           },
           {
             "name": "retry",
@@ -912,10 +912,10 @@
       "canonical": true,
       "clientMethod": {
         "client": {
-          "fullName": "google.iam_v2.PoliciesClient",
+          "fullName": "google.cloud.iam_v2.PoliciesClient",
           "shortName": "PoliciesClient"
         },
-        "fullName": "google.iam_v2.PoliciesClient.update_policy",
+        "fullName": "google.cloud.iam_v2.PoliciesClient.update_policy",
         "method": {
           "fullName": "google.iam.v2.Policies.UpdatePolicy",
           "service": {
@@ -927,7 +927,7 @@
         "parameters": [
           {
             "name": "request",
-            "type": "google.iam_v2.types.UpdatePolicyRequest"
+            "type": "google.cloud.iam_v2.types.UpdatePolicyRequest"
           },
           {
             "name": "retry",

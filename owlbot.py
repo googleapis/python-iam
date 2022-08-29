@@ -62,7 +62,7 @@ def get_staging_dirs(
 # This library ships clients for two different APIs,
 # IAM and IAM credentials
 iam_credentials_default_version = "v1"
-iam_default_version = "v2beta"
+iam_default_version = "v2"
 
 for library in get_staging_dirs(iam_default_version, "iam"):
     s.move([library], excludes=["setup.py", "README.rst", "docs/index.rst", "google/cloud/iam/**",])
@@ -74,7 +74,6 @@ s.remove_staging_dirs()
 
 templated_files = CommonTemplates().py_library(
     microgenerator=True,
-    versions=detect_versions(path="./google", default_first=True),
 )
 s.move(
     [templated_files], excludes=[".coveragerc"]

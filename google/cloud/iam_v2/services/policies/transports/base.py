@@ -26,13 +26,13 @@ from google.longrunning import operations_pb2  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 import pkg_resources
 
-from google.iam_v2.types import policy
-from google.iam_v2.types import policy as gi_policy
+from google.cloud.iam_v2.types import policy
+from google.cloud.iam_v2.types import policy as gi_policy
 
 try:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution(
-            "google-iam",
+            "google-cloud-iam",
         ).version,
     )
 except pkg_resources.DistributionNotFound:
