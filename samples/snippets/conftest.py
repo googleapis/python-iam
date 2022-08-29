@@ -16,17 +16,17 @@ import os
 import re
 import uuid
 
-from _pytest.capture import CaptureFixture
 import pytest
 
-from . import create_deny_policy, delete_deny_policy
+from samples.snippets.create_deny_policy import create_deny_policy
+from samples.snippets.delete_deny_policy import delete_deny_policy
 
 PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 
 @pytest.fixture
-def deny_policy(capsys: CaptureFixture) -> None:
+def deny_policy(capsys: "pytest.CaptureFixture[str]") -> None:
     policy_id = f"limit-project-deletion-{uuid.uuid4()}"
 
     # Create the Deny policy.
