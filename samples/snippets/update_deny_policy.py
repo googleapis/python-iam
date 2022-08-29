@@ -16,8 +16,8 @@
 
 # [START iam_update_deny_policy]
 def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
-    from google.cloud import iam_v2beta
-    from google.cloud.iam_v2beta import types
+    from google.cloud import iam_v2
+    from google.cloud.iam_v2 import types
 
     """
     Update the deny rules and/ or its display name after policy creation.
@@ -29,7 +29,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     etag: Etag field that identifies the policy version. The etag changes each time
     you update the policy. Get the etag of an existing policy by performing a GetPolicy request.
     """
-    policies_client = iam_v2beta.PoliciesClient()
+    policies_client = iam_v2.PoliciesClient()
 
     # Each deny policy is attached to an organization, folder, or project.
     # To work with deny policies, specify the attachment point.
