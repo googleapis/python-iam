@@ -18,7 +18,6 @@
 def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     from google.cloud import iam_v2beta
     from google.cloud.iam_v2beta import types
-    from google.type import expr_pb2
 
     """
     Update the deny rules and/ or its display name after policy creation.

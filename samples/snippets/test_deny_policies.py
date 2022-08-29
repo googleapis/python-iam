@@ -24,14 +24,14 @@ PROJECT_ID = os.environ["PROJECT_ID"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 
-def test_retrieve_policy(capsys: CaptureFixture, deny_policy) -> None:
+def test_retrieve_policy(capsys: CaptureFixture, deny_policy: str) -> None:
     # Test policy retrieval, given the policy id.
     get_deny_policy(PROJECT_ID, deny_policy)
     out, _ = capsys.readouterr()
     assert re.search(f"Retrieved the deny policy: {deny_policy}", out)
 
 
-def test_list_policies(capsys: CaptureFixture, deny_policy) -> None:
+def test_list_policies(capsys: CaptureFixture, deny_policy: str) -> None:
     # Check if the created policy is listed.
     list_deny_policy(PROJECT_ID)
     out, _ = capsys.readouterr()
@@ -39,7 +39,7 @@ def test_list_policies(capsys: CaptureFixture, deny_policy) -> None:
     assert re.search("Listed all deny policies", out)
 
 
-def test_update_deny_policy(capsys: CaptureFixture, deny_policy) -> None:
+def test_update_deny_policy(capsys: CaptureFixture, deny_policy: str) -> None:
     # Check if the policy rule is updated.
     policy = get_deny_policy(PROJECT_ID, deny_policy)
     update_deny_policy(PROJECT_ID, deny_policy, policy.etag)

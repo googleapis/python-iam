@@ -20,7 +20,6 @@
 def create_deny_policy(project_id: str, policy_id: str) -> None:
     from google.cloud import iam_v2beta
     from google.cloud.iam_v2beta import types
-    from google.type import expr_pb2
 
     """
       Create a deny policy.

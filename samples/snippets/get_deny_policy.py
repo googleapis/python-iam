@@ -15,10 +15,11 @@
 # This file contains code samples that demonstrate how to get IAM deny policies.
 
 # [START iam_get_deny_policy]
-def get_deny_policy(project_id: str, policy_id: str):
-    from google.cloud import iam_v2beta
-    from google.cloud.iam_v2beta import Policy, types
+from google.cloud import iam_v2beta
+from google.cloud.iam_v2beta import Policy, types
 
+
+def get_deny_policy(project_id: str, policy_id: str) -> Policy:
     """
     Retrieve the deny policy given the project ID and policy ID.
 
