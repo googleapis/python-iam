@@ -17,7 +17,6 @@ import re
 import uuid
 
 import pytest
-
 from samples.snippets.create_deny_policy import create_deny_policy
 from samples.snippets.delete_deny_policy import delete_deny_policy
 
