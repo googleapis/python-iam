@@ -18,9 +18,7 @@ import uuid
 
 from google.cloud import iam_v2
 from google.cloud.iam_v2 import types
-
 import pytest
-
 from samples.snippets.create_deny_policy import create_deny_policy
 from samples.snippets.delete_deny_policy import delete_deny_policy
 
