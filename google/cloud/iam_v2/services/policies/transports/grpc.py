@@ -390,43 +390,6 @@ class PoliciesGrpcTransport(PoliciesTransport):
             )
         return self._stubs["delete_policy"]
 
-    @property
-    def list_applicable_policies(
-        self,
-    ) -> Callable[
-        [policy.ListApplicablePoliciesRequest], policy.ListApplicablePoliciesResponse
-    ]:
-        r"""Return a callable for the list applicable policies method over gRPC.
-
-        Retrieves all the policies that are attached to the specified
-        resource, or anywhere in the ancestry of the resource. For
-        example, for a project this endpoint would return all the
-        ``denyPolicy`` kind policies attached to the project, its parent
-        folder (if any), and its parent organization (if any). The
-        endpoint requires the same permissions that it would take to
-        call ``ListPolicies`` or ``GetPolicy``.
-
-        The main reason to use this endpoint is as a policy admin to
-        debug access issues for a resource.
-
-        Returns:
-            Callable[[~.ListApplicablePoliciesRequest],
-                    ~.ListApplicablePoliciesResponse]:
-                A function that, when called, will call the underlying RPC
-                on the server.
-        """
-        # Generate a "stub function" on-the-fly which will actually make
-        # the request.
-        # gRPC handles serialization and deserialization, so we just need
-        # to pass in the functions for each.
-        if "list_applicable_policies" not in self._stubs:
-            self._stubs["list_applicable_policies"] = self.grpc_channel.unary_unary(
-                "/google.iam.v2.Policies/ListApplicablePolicies",
-                request_serializer=policy.ListApplicablePoliciesRequest.serialize,
-                response_deserializer=policy.ListApplicablePoliciesResponse.deserialize,
-            )
-        return self._stubs["list_applicable_policies"]
-
     def close(self):
         self.grpc_channel.close()
 

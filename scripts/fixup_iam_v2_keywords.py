@@ -42,7 +42,6 @@ class iamCallTransformer(cst.CSTTransformer):
         'create_policy': ('parent', 'policy', 'policy_id', ),
         'delete_policy': ('name', 'etag', ),
         'get_policy': ('name', ),
-        'list_applicable_policies': ('attachment_point', 'filter', 'page_token', 'page_size', ),
         'list_policies': ('parent', 'page_size', 'page_token', ),
         'update_policy': ('policy', ),
     }

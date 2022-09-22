@@ -29,8 +29,6 @@ __protobuf__ = proto.module(
         "CreatePolicyRequest",
         "UpdatePolicyRequest",
         "DeletePolicyRequest",
-        "ListApplicablePoliciesRequest",
-        "ListApplicablePoliciesResponse",
         "PolicyOperationMetadata",
     },
 )
@@ -359,113 +357,6 @@ class DeletePolicyRequest(proto.Message):
     etag = proto.Field(
         proto.STRING,
         number=2,
-    )
-
-
-class ListApplicablePoliciesRequest(proto.Message):
-    r"""``ListApplicablePoliciesRequest`` represents the Request message for
-    the ``ListApplicablePolicies`` method. It provides the input for a
-    filterable query of Policies that apply to a certain GCP Resource,
-    specified by the field ``attachment_point``, found on this message.
-    Example:
-
-    ::
-
-       {
-          attachment_point:
-          'cloudresourcemanager.googleapis.com%2Forganizations%2F212345678901'
-          filter: 'kind:denyPolicies'
-       }
-
-    Attributes:
-        attachment_point (str):
-            Required. The Cloud resource at which the applicable
-            policies are to be retrieved. Format: ``{attachment-point}``
-            Use the URL-encoded full resource name, which means that the
-            forward-slash character, ``/``, must be written as ``%2F``.
-            For example,
-            ``cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project``.
-        filter (str):
-            Filtering currently only supports the kind of policies to
-            return, and must be in the format “kind:[policyKind1] OR
-            kind:[policyKind2]”. New policy kinds may be added in the
-            future without notice.
-
-            Example value: “kind:denyPolicies”
-        page_token (str):
-            If present, then retrieve the batch of results following the
-            results from the preceding call to this method.
-            ``page_token`` must be the value of ``next_page_token``
-            [ListApplicablePoliciesResponse.next_page_token][google.iam.v2.ListApplicablePoliciesResponse.next_page_token]
-            from the previous response. The values of other method
-            parameters should be identical to those in the previous
-            call.
-        page_size (int):
-            Limit on the number of policies to include in the response.
-            Further policies can subsequently be obtained by including
-            the
-            [ListApplicablePoliciesResponse.next_page_token][google.iam.admin.v1.ListApplicablePoliciesResponse.next_page_token]
-            in a subsequent request. The minimum is 25, and the maximum
-            is 100.
-    """
-
-    attachment_point = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    filter = proto.Field(
-        proto.STRING,
-        number=2,
-    )
-    page_token = proto.Field(
-        proto.STRING,
-        number=3,
-    )
-    page_size = proto.Field(
-        proto.INT32,
-        number=4,
-    )
-
-
-class ListApplicablePoliciesResponse(proto.Message):
-    r"""Response message for [ListApplicablePolicies][] method.
-
-    Attributes:
-        policies (Sequence[google.cloud.iam_v2.types.Policy]):
-            Ordered list starting from the resource on
-            which this API was called then proceeding up the
-            hierarchy. Policies for the same attachment
-            point will be grouped, but no further ordering
-            is guaranteed.
-        inaccessible (Sequence[str]):
-            A list of resources that the caller does not have permission
-            to retrieve. List or Get can be used to get detailed error
-            messages. Get:
-            ``policies/{attachment-point}/denypolicies/{policy-id}``
-            List: ``policies/{attachment-point}/denypolicies``
-        next_page_token (str):
-            A page token that can be used in a
-            [ListApplicablePoliciesRequest][google.iam.v2.ListApplicablePoliciesRequest]
-            to retrieve the next page. If this field is blank, there are
-            no additional pages.
-    """
-
-    @property
-    def raw_page(self):
-        return self
-
-    policies = proto.RepeatedField(
-        proto.MESSAGE,
-        number=1,
-        message="Policy",
-    )
-    inaccessible = proto.RepeatedField(
-        proto.STRING,
-        number=2,
-    )
-    next_page_token = proto.Field(
-        proto.STRING,
-        number=3,
     )
 
 

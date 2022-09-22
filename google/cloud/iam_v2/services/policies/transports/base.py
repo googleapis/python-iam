@@ -199,11 +199,6 @@ class PoliciesTransport(abc.ABC):
                 default_timeout=60.0,
                 client_info=client_info,
             ),
-            self.list_applicable_policies: gapic_v1.method.wrap_method(
-                self.list_applicable_policies,
-                default_timeout=None,
-                client_info=client_info,
-            ),
         }
 
     def close(self):
@@ -261,18 +256,6 @@ class PoliciesTransport(abc.ABC):
     ) -> Callable[
         [policy.DeletePolicyRequest],
         Union[operations_pb2.Operation, Awaitable[operations_pb2.Operation]],
-    ]:
-        raise NotImplementedError()
-
-    @property
-    def list_applicable_policies(
-        self,
-    ) -> Callable[
-        [policy.ListApplicablePoliciesRequest],
-        Union[
-            policy.ListApplicablePoliciesResponse,
-            Awaitable[policy.ListApplicablePoliciesResponse],
-        ],
     ]:
         raise NotImplementedError()
 
