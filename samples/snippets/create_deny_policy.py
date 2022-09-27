@@ -99,8 +99,8 @@ def create_deny_policy(project_id: str, policy_id: str) -> None:
     request.policy = policy
     request.policy_id = policy_id
 
-    # Build the create policy request.
-    policies_client.create_policy(request=request)
+    # Build the create policy request and wait for the operation to complete.
+    policies_client.create_policy(request=request).result()
     print(f"Created the deny policy: {policy_id}")
 
 

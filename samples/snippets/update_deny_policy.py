@@ -93,7 +93,7 @@ def update_deny_policy(project_id: str, policy_id: str, etag: str) -> None:
     request = types.UpdatePolicyRequest()
     request.policy = policy
 
-    policies_client.update_policy(request=request)
+    policies_client.update_policy(request=request).result()
     print(f"Updated the deny policy: {policy_id}")
 
 

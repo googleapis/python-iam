@@ -45,7 +45,7 @@ def delete_deny_policy(project_id: str, policy_id: str) -> None:
     request.name = f"policies/{attachment_point}/denypolicies/{policy_id}"
 
     # Create the DeletePolicy request.
-    policies_client.delete_policy(request=request)
+    policies_client.delete_policy(request=request).result()
     print(f"Deleted the deny policy: {policy_id}")
 
 
