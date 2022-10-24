@@ -15,8 +15,6 @@
 
 ### Bug Fixes
 
-* **deps:** Allow protobuf 3.19.5 ([#240](https://github.com/googleapis/python-iam/issues/240)) ([96b63f4](https://github.com/googleapis/python-iam/commit/96b63f4ad0879eaa0743591cade7fc19ad851955))
-* **deps:** Require protobuf &gt;= 3.20.2 ([#239](https://github.com/googleapis/python-iam/issues/239)) ([7985771](https://github.com/googleapis/python-iam/commit/798577162b95a6774e02a05e92b9f76b85c78690))
 * **v2beta:** remove google.api.resource_reference annotations ([bbe8e3d](https://github.com/googleapis/python-iam/commit/bbe8e3d3e1be719d4d617e3e7536d6a331f85f66))
 
 ## [2.8.2](https://github.com/googleapis/python-iam/compare/v2.8.1...v2.8.2) (2022-08-11)
