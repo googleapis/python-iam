@@ -14,24 +14,21 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -41,8 +38,8 @@ except AttributeError:  # pragma: NO COVER
 
 from google.cloud.iam_credentials_v1.types import common
 
-from .base import IAMCredentialsTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
-
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import IAMCredentialsTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -103,7 +100,12 @@ class IAMCredentialsRestInterceptor:
 
 
     """
-    def pre_generate_access_token(self, request: common.GenerateAccessTokenRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[common.GenerateAccessTokenRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_generate_access_token(
+        self,
+        request: common.GenerateAccessTokenRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[common.GenerateAccessTokenRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for generate_access_token
 
         Override in a subclass to manipulate the request or metadata
@@ -111,7 +113,9 @@ class IAMCredentialsRestInterceptor:
         """
         return request, metadata
 
-    def post_generate_access_token(self, response: common.GenerateAccessTokenResponse) -> common.GenerateAccessTokenResponse:
+    def post_generate_access_token(
+        self, response: common.GenerateAccessTokenResponse
+    ) -> common.GenerateAccessTokenResponse:
         """Post-rpc interceptor for generate_access_token
 
         Override in a subclass to manipulate the response
@@ -119,7 +123,12 @@ class IAMCredentialsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_generate_id_token(self, request: common.GenerateIdTokenRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[common.GenerateIdTokenRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_generate_id_token(
+        self,
+        request: common.GenerateIdTokenRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[common.GenerateIdTokenRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for generate_id_token
 
         Override in a subclass to manipulate the request or metadata
@@ -127,7 +136,9 @@ class IAMCredentialsRestInterceptor:
         """
         return request, metadata
 
-    def post_generate_id_token(self, response: common.GenerateIdTokenResponse) -> common.GenerateIdTokenResponse:
+    def post_generate_id_token(
+        self, response: common.GenerateIdTokenResponse
+    ) -> common.GenerateIdTokenResponse:
         """Post-rpc interceptor for generate_id_token
 
         Override in a subclass to manipulate the response
@@ -135,7 +146,10 @@ class IAMCredentialsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_sign_blob(self, request: common.SignBlobRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[common.SignBlobRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_sign_blob(
+        self, request: common.SignBlobRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[common.SignBlobRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for sign_blob
 
         Override in a subclass to manipulate the request or metadata
@@ -143,7 +157,9 @@ class IAMCredentialsRestInterceptor:
         """
         return request, metadata
 
-    def post_sign_blob(self, response: common.SignBlobResponse) -> common.SignBlobResponse:
+    def post_sign_blob(
+        self, response: common.SignBlobResponse
+    ) -> common.SignBlobResponse:
         """Post-rpc interceptor for sign_blob
 
         Override in a subclass to manipulate the response
@@ -151,7 +167,10 @@ class IAMCredentialsRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_sign_jwt(self, request: common.SignJwtRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[common.SignJwtRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_sign_jwt(
+        self, request: common.SignJwtRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[common.SignJwtRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for sign_jwt
 
         Override in a subclass to manipulate the request or metadata
@@ -198,20 +217,21 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'iamcredentials.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[IAMCredentialsRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "iamcredentials.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[IAMCredentialsRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -250,7 +270,9 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -261,10 +283,11 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or IAMCredentialsRestInterceptor()
@@ -274,19 +297,24 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         def __hash__(self):
             return hash("GenerateAccessToken")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: common.GenerateAccessTokenRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> common.GenerateAccessTokenResponse:
+        def __call__(
+            self,
+            request: common.GenerateAccessTokenRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> common.GenerateAccessTokenResponse:
             r"""Call the generate access token method over HTTP.
 
             Args:
@@ -303,46 +331,51 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/serviceAccounts/*}:generateAccessToken',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/serviceAccounts/*}:generateAccessToken",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_generate_access_token(request, metadata)
+            request, metadata = self._interceptor.pre_generate_access_token(
+                request, metadata
+            )
             pb_request = common.GenerateAccessTokenRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -361,19 +394,24 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         def __hash__(self):
             return hash("GenerateIdToken")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: common.GenerateIdTokenRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> common.GenerateIdTokenResponse:
+        def __call__(
+            self,
+            request: common.GenerateIdTokenRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> common.GenerateIdTokenResponse:
             r"""Call the generate id token method over HTTP.
 
             Args:
@@ -390,46 +428,51 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/serviceAccounts/*}:generateIdToken',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/serviceAccounts/*}:generateIdToken",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_generate_id_token(request, metadata)
+            request, metadata = self._interceptor.pre_generate_id_token(
+                request, metadata
+            )
             pb_request = common.GenerateIdTokenRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -448,19 +491,24 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         def __hash__(self):
             return hash("SignBlob")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: common.SignBlobRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> common.SignBlobResponse:
+        def __call__(
+            self,
+            request: common.SignBlobRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> common.SignBlobResponse:
             r"""Call the sign blob method over HTTP.
 
             Args:
@@ -477,11 +525,12 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/serviceAccounts/*}:signBlob',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/serviceAccounts/*}:signBlob",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_sign_blob(request, metadata)
             pb_request = common.SignBlobRequest.pb(request)
@@ -490,33 +539,35 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -535,19 +586,24 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         def __hash__(self):
             return hash("SignJwt")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: common.SignJwtRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> common.SignJwtResponse:
+        def __call__(
+            self,
+            request: common.SignJwtRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> common.SignJwtResponse:
             r"""Call the sign jwt method over HTTP.
 
             Args:
@@ -564,11 +620,12 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/serviceAccounts/*}:signJwt',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/serviceAccounts/*}:signJwt",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_sign_jwt(request, metadata)
             pb_request = common.SignJwtRequest.pb(request)
@@ -577,33 +634,35 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -619,36 +678,34 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
             return resp
 
     @property
-    def generate_access_token(self) -> Callable[
-            [common.GenerateAccessTokenRequest],
-            common.GenerateAccessTokenResponse]:
+    def generate_access_token(
+        self,
+    ) -> Callable[
+        [common.GenerateAccessTokenRequest], common.GenerateAccessTokenResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GenerateAccessToken(self._session, self._host, self._interceptor) # type: ignore
+        return self._GenerateAccessToken(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def generate_id_token(self) -> Callable[
-            [common.GenerateIdTokenRequest],
-            common.GenerateIdTokenResponse]:
+    def generate_id_token(
+        self,
+    ) -> Callable[[common.GenerateIdTokenRequest], common.GenerateIdTokenResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GenerateIdToken(self._session, self._host, self._interceptor) # type: ignore
+        return self._GenerateIdToken(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def sign_blob(self) -> Callable[
-            [common.SignBlobRequest],
-            common.SignBlobResponse]:
+    def sign_blob(self) -> Callable[[common.SignBlobRequest], common.SignBlobResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._SignBlob(self._session, self._host, self._interceptor) # type: ignore
+        return self._SignBlob(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def sign_jwt(self) -> Callable[
-            [common.SignJwtRequest],
-            common.SignJwtResponse]:
+    def sign_jwt(self) -> Callable[[common.SignJwtRequest], common.SignJwtResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._SignJwt(self._session, self._host, self._interceptor) # type: ignore
+        return self._SignJwt(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -658,6 +715,4 @@ class IAMCredentialsRestTransport(IAMCredentialsTransport):
         self._session.close()
 
 
-__all__=(
-    'IAMCredentialsRestTransport',
-)
+__all__ = ("IAMCredentialsRestTransport",)
